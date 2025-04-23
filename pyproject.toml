@@ -31,5 +31,9 @@ known_third_party= []
 
 format = "ruff check . --fix"
 test = "poetry run pytest tests -v"
-run = "python -m src.main"
+run = "poetry run python -m src.main"
 
+[tool.poetry]
+packages = [
+    { include = "src" }
+]
