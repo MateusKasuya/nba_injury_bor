@@ -1,7 +1,6 @@
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
-import pytest
 
 from src.request_report import NBAInjuryReport
 
