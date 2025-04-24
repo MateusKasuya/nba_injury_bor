@@ -3,6 +3,10 @@ from zoneinfo import ZoneInfo
 
 import requests
 
+import io
+import re
+import json
+from pypdf import PdfReader
 
 class NBAInjuryReport:
     def __init__(self):
@@ -70,7 +74,7 @@ class NBAInjuryReport:
 
         return time_str
 
-    def request_report(self) -> bytes:
+    def _request_report(self) -> bytes:
         BASE_URL = (
             'https://ak-static.cms.nba.com/referee/injury/Injury-Report_'
         )
@@ -92,3 +96,101 @@ class NBAInjuryReport:
             print(f'❌ Relatório não encontrado para {time_str}.')
 
             return None
+        
+    def _bytes_to_stream(self):
+        content = self._request_report()
+        content_stream = io.BytesIO(content)
+
+        return content_stream
+        
+
+    def pdf_reader(self):
+        reader = PdfReader("data/test_pdf.pdf")
+
+        # Lê todas as páginas
+        raw_text = ""
+        for idx, page in enumerate(reader.pages):
+            raw_text += f"\n=== PAGE {idx + 1} ===\n"
+            raw_text += page.extract_text() + "\n"
+
+        # Tokeniza por palavra
+        tokens = [t.strip() for t in raw_text.split() if t.strip()]
+        
+        games = []
+        i = 0
+        current_game = None
+        current_team = None
+
+        status_options = {"Out", "Available", "Questionable", "Doubtful"}
+
+        while i < len(tokens):
+            # Detecta novo jogo: horário + (ET) + matchup
+            if re.match(r"\d{2}:\d{2}", tokens[i]) and (i + 2 < len(tokens) and "@" in tokens[i + 2]):
+                if current_game:
+                    games.append(current_game)
+
+                current_game = {
+                    "time": f"{tokens[i]} {tokens[i+1]}",
+                    "matchup": tokens[i+2],
+                    "teams": []
+                }
+                current_team = None
+                i += 3
+                continue
+
+            # Detecta jogador (nome + status + razão)
+            elif "," in tokens[i] and i + 2 < len(tokens) and tokens[i + 2] in status_options:
+                player_name = f"{tokens[i]} {tokens[i + 1]}"
+                status = tokens[i + 2]
+                reason_tokens = []
+                i += 3
+                while i < len(tokens):
+                    token = tokens[i]
+                    if token in status_options or re.match(r"\d{2}:\d{2}", token) or "," in token:
+                        break
+                    reason_tokens.append(token)
+                    i += 1
+                reason = " ".join(reason_tokens)
+
+                if current_team:
+                    current_team["players"].append({
+                        "name": player_name,
+                        "status": status,
+                        "reason": reason
+                    })
+                continue
+
+            # Detecta nome do time (título contínuo com palavras sem pontuação)
+            elif tokens[i].istitle() and i + 1 < len(tokens) and tokens[i + 1].istitle():
+                team_tokens = []
+                while i < len(tokens) and tokens[i].istitle() and "," not in tokens[i] and tokens[i] not in status_options:
+                    team_tokens.append(tokens[i])
+                    i += 1
+
+                possible_team = " ".join(team_tokens)
+                if current_game and possible_team and not any(t.get("name") == possible_team for t in current_game["teams"]):
+                    current_team = {
+                        "name": possible_team,
+                        "players": []
+                    }
+                    current_game["teams"].append(current_team)
+                continue
+
+            else:
+                i += 1
+
+        if current_game:
+            games.append(current_game)
+
+        return games
+
+    def export_to_json(self, filepath="data/injury_report.json"):
+        data = self.pdf_reader()
+        with open(filepath, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+        print(f"✅ Relatório salvo em {filepath}")
+
+
+        
+
+

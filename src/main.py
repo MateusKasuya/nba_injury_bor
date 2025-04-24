@@ -7,7 +7,8 @@ from src.request_report import NBAInjuryReport
 
 if __name__ == '__main__':
     report = NBAInjuryReport()
+    games = report.export_to_json()
 
-    report.request_report()
-    
+    from pprint import pprint
+    pprint(games)
     
