@@ -5,7 +5,7 @@ description = ""
 authors = ["Mateus Kasuya <mateusvbkasuya@gmail.com>"]
 readme = "README.md"
 packages = [{ include = "src" }]
-python = ">=3.11,<3.13"
+python = ">=3.12,<3.13"
 
 [tool.poetry.dependencies]
 requests = ">=2.32.3,<3.0.0"
