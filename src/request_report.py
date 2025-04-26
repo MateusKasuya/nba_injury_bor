@@ -105,7 +105,7 @@ class NBAInjuryReport:
         
 
     def pdf_reader(self):
-        reader = PdfReader("data/test_pdf.pdf")
+        reader = PdfReader(self._bytes_to_stream())
 
         # Lê todas as páginas
         raw_text = ""
