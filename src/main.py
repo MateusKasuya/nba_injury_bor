@@ -6,17 +6,24 @@ sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 from src.request_report import NBAInjuryReport
 from src.postx import create_tweet
 
+from datetime import datetime
+
+import time
+
 if __name__ == "__main__":
     report = NBAInjuryReport()
     games = report._pdf_reader()
 
     for game in games:
-        text = str(game)
 
-        if len(text) <= 280:
-            create_tweet(text=text)
-        else:
-            create_tweet(text=text[:280])
+        time.sleep(5)
+
+        text = str(game)[:250]  # deixa espaço
+        timestamp = datetime.now().strftime("%H:%M:%S")
+        text = f"{text} ({timestamp})"
+
+        create_tweet(text=text)
+
 
     # for game in games:
 
