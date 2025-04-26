@@ -1,114 +1,6 @@
 [
   {
     "time": "07:00 (ET)",
-    "matchup": "ORL@BOS",
-    "teams": [
-      {
-        "name": "Orlando Magic",
-        "players": [
-          {
-            "name": "Suggs, Jalen",
-            "status": "Out",
-            "reason": "Injury/Illness - Left Knee; Trochlea cartilage tear"
-          },
-          {
-            "name": "Wagner, Moritz",
-            "status": "Out",
-            "reason": "Injury/Illness - Left Knee; Torn ACL Boston Celtics"
-          },
-          {
-            "name": "Tatum, Jayson",
-            "status": "Out",
-            "reason": "Injury/Illness - Right Distal Radius; Bone Bruise"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "time": "07:30 (ET)",
-    "matchup": "MIA@CLE",
-    "teams": [
-      {
-        "name": "Miami Heat",
-        "players": [
-          {
-            "name": "Burks, Alec",
-            "status": "Available",
-            "reason": "Injury/Illness - Lower Back; Discomfort"
-          },
-          {
-            "name": "Highsmith, Haywood",
-            "status": "Available",
-            "reason": "Injury/Illness - Left Achilles; Soreness"
-          },
-          {
-            "name": "Jovic, Nikola",
-            "status": "Available",
-            "reason": "Injury/Illness - Right Hand; Broken"
-          },
-          {
-            "name": "Larsson, Pelle",
-            "status": "Available",
-            "reason": "Injury/Illness - Right Ankle; Sprain"
-          },
-          {
-            "name": "Love, Kevin",
-            "status": "Out",
-            "reason": "Personal Reasons"
-          },
-          {
-            "name": "Robinson, Duncan",
-            "status": "Available",
-            "reason": "Injury/Illness - Left Sacroiliac Joint; Dysfunction"
-          },
-          {
-            "name": "Rozier, Terry",
-            "status": "Out",
-            "reason": "Injury/Illness - Left Ankle; Sprain"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "time": "09:30 (ET)",
-    "matchup": "GSW@HOU",
-    "teams": [
-      {
-        "name": "Golden State Warriors",
-        "players": [
-          {
-            "name": "Curry, Stephen",
-            "status": "Available",
-            "reason": "Injury/Illness - Right Thumb; Splint Payton"
-          },
-          {
-            "name": "II, Gary",
-            "status": "Available",
-            "reason": "Injury/Illness - Left Thumb; Splint"
-          },
-          {
-            "name": "Podziemski, Brandin",
-            "status": "Questionable",
-            "reason": "Injury/Illness - N/A; Illness Houston Rockets"
-          },
-          {
-            "name": "Landale, Jock",
-            "status": "Out",
-            "reason": "Injury/Illness - Right Knee; Contusion"
-          },
-          {
-            "name": "Tate, Jae'Sean",
-            "status": "Out",
-            "reason": "Injury/Illness - Right Ankle; === PAGE 2 === Injury Report: 04/23/25"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "time": "07:00 (ET)",
     "matchup": "NYK@DET",
     "teams": [
       {
@@ -174,9 +66,66 @@
           {
             "name": "Jr., Michael",
             "status": "Questionable",
-            "reason": "Injury/Illness - Left Shoulder; Sprain LA Clippers NOT YET SUBMITTED"
+            "reason": "Injury/Illness - Left Shoulder; Sprain 04/25/2025"
           }
         ]
+      }
+    ]
+  },
+  {
+    "time": "07:00 (ET)",
+    "matchup": "BOS@ORL",
+    "teams": [
+      {
+        "name": "Boston Celtics",
+        "players": []
+      },
+      {
+        "name": "Orlando Magic",
+        "players": [
+          {
+            "name": "Suggs, Jalen",
+            "status": "Out",
+            "reason": "Injury/Illness - Left Knee; Trochlea cartilage tear"
+          },
+          {
+            "name": "Wagner, Moritz",
+            "status": "Out",
+            "reason": "Injury/Illness - Left Knee; Torn ACL"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "time": "08:00 (ET)",
+    "matchup": "IND@MIL",
+    "teams": [
+      {
+        "name": "Indiana Pacers",
+        "players": []
+      },
+      {
+        "name": "Milwaukee Bucks",
+        "players": []
+      }
+    ]
+  },
+  {
+    "time": "09:30 (ET)",
+    "matchup": "LAL@MIN",
+    "teams": [
+      {
+        "name": "Los Angeles Lakers",
+        "players": []
+      },
+      {
+        "name": "Injury Report:",
+        "players": []
+      },
+      {
+        "name": "Minnesota Timberwolves",
+        "players": []
       }
     ]
   }
