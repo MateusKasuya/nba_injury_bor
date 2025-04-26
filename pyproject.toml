@@ -10,7 +10,9 @@ requires-python = ">=3.12,<3.13"
 dependencies = [
     "requests (>=2.32.3,<3.0.0)",
     "tzdata (>=2025.2,<2026.0)",
-    "pypdf (>=5.4.0,<6.0.0)"
+    "pypdf (>=5.4.0,<6.0.0)",
+    "tweepy (>=4.15.0,<5.0.0)",
+    "python-dotenv (>=1.1.0,<2.0.0)",
 ]
 
 
