@@ -5,7 +5,6 @@ import requests
 
 import io
 import re
-import json
 from pypdf import PdfReader
 
 
@@ -101,7 +100,7 @@ class NBAInjuryReport:
 
         return content_stream
 
-    def pdf_reader(self):
+    def _pdf_reader(self):
         reader = PdfReader(self._bytes_to_stream())
 
         # Lê todas as páginas
@@ -199,8 +198,17 @@ class NBAInjuryReport:
 
         return games
 
-    def export_to_json(self, filepath="data/injury_report.json"):
-        data = self.pdf_reader()
-        with open(filepath, "w", encoding="utf-8") as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
-        print(f"✅ Relatório salvo em {filepath}")
+    # def export_to_json(self, filepath="data/injury_report.json"):
+    #     data = self.pdf_reader()
+    #     with open(filepath, "w", encoding="utf-8") as f:
+    #         json.dump(data, f, ensure_ascii=False, indent=2)
+    #     print(f"✅ Relatório salvo em {filepath}")
+
+    # def caracters_lenght(self):
+    #     data = self._pdf_reader()
+
+    #     for element in data:
+
+    #         print(type(element))
+    #         print(len(str(element)))
+    #         print(element)
